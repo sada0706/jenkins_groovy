@@ -1,19 +1,16 @@
+// Jenkinsfile
+@Library('jenkins-library') _
+
 pipeline {
     agent any
     stages {
-        stage('Build') {
+        stage('Example') {
             steps {
-                echo 'Building...'
-            }
-        }
-        stage('Test') {
-            steps {
-                echo 'Testing...'
-            }
-        }
-        stage('Deploy') {
-            steps {
-                echo 'Deploying...'
+                script {
+                    exampleVar('World')
+                    def exampleStep = new org.jenkinsci.plugins.ExampleStep(this)
+                    exampleStep.greet('World')
+                }
             }
         }
     }
